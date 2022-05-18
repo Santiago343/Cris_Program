@@ -10,14 +10,14 @@
         protected $returnType = 'object';
 
         protected $allowedFields = [
-                                    'id_admin', 'nombre', 'ap_materno', 'ap_paterno', 'sexo', 'foto', 'email', 'id_rol'
+                                    'id_admin', 'nombre', 'ap_materno', 'ap_paterno', 'sexo', 'foto', 'email', 'id_rol', 'matricula' 
                                     ];
         
         //Funciones que nos ayudaran a realizar peticiones (consultas) para obtener la información que deseemos
         public function data_table_calzados($tipo_categoria = 0) {
             $resultado = $this
                     ->select('
-                                 id_admin, nombre, ap_materno, ap_paterno, sexo, foto, email, id_rol
+                                 id_admin, nombre, ap_materno, ap_paterno, sexo, foto, email, id_rol, matricula
                             ')
                     ->where('sexo',$tipo_categoria)
                     ->orderBy('nombre', 'ASC')
@@ -28,8 +28,7 @@
         public function obtener_calzado($id_admin = 0){
             $resultado = $this
                         ->select('
-                                id_admin, nombre, editorial, sexo, paginas, 
-                                precio, imagen_libro, descripcion, fecha
+                                id_admin, nombre, ap_materno, ap_paterno, sexo, foto, email, id_rol, matricula
                                 ')
                         ->where('id_admin', $id_admin)
                         ->first();
